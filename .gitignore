@@ -1,0 +1,16 @@
+.DS_Store
+*.tar.gz
+
+__pycache__
+local_lib
+venv
+
+*.wiki
+django_venv
+
+logs.log
+0*_*.py
+
+.env
+
+node_modules
