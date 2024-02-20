@@ -1,13 +1,18 @@
-import React from 'react';
-import RecordList from './componets/RecordList';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
-    <div className="container">
-      <header className="">
-        <RecordList />
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

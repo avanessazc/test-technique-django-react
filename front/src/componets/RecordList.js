@@ -18,11 +18,25 @@ function RecordList() {
   return (
     <div>
       <h1 className="">Record List</h1>
+      <div className="d-flex align-items-center justify-content-center fs-5">
+        <div className="p-3 text-center ">ID</div>
+        <div className="p-2 text-center w-100">TEXT</div>
+        <div className="p-2 text-center">ACTIONS</div>
+      </div>
       {records.length !== 0 &&
         records.map((record) => (
-          <p key={record.id}>
-            {record.id} - {record.text}
-          </p>
+          <div key={record.id} className="d-flex align-items-center">
+            <div className="p-3">{record.id}</div>
+            <div className="p-2 w-100">{record.text}</div>
+            <div className="d-flex p-2">
+              <button type="button" class="btn btn-light ms-2">
+                🗑️
+              </button>
+              <button type="button" class="btn btn-light ms-2">
+                ✎
+              </button>
+            </div>
+          </div>
         ))}
     </div>
   );
