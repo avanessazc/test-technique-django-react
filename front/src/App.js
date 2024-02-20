@@ -1,11 +1,11 @@
 import React from 'react';
-import HelloWorld from './componets/HelloWorld';
+import RecordList from './componets/RecordList';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <HelloWorld />
+    <div className="container">
+      <header className="">
+        <RecordList />
       </header>
     </div>
   );
