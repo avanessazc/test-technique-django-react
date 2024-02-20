@@ -5,7 +5,7 @@ function HelloWorld() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_SERVER_ENDPOIN}/api/hello-world/`)
+    axios.get(`${process.env.REACT_APP_SERVER_ENDPOIN}/api/record/`)
       .then(response => {
         setMessage(response.data.message);
       })
