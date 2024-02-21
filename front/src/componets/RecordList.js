@@ -11,7 +11,7 @@ function RecordList({ records }) {
     console.log("Delete...")
   }
   const handleAddClick = () => {
-    console.log("Add new record...")
+    navigate(`/create`)
   }
   return (
     <div className="d-flex flex-column align-items-center w-100">

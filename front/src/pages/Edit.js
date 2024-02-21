@@ -23,14 +23,13 @@ function Edit() {
 
   const editFn = (id, text) => {
     axios
-      .put(`${process.env.REACT_APP_SERVER_ENDPOINT}/api/record/${id}/`,{text: text})
+      .put(`${process.env.REACT_APP_SERVER_ENDPOINT}/api/record/${id}/`, { text: text })
       .then((response) => {
         console.log("response:", response);
         navigate(`/`)
       })
       .catch((error) => {
-        console.log("Error:", error?.response?.data?.error);
-        // navigate(`/`)
+        console.log("Error:", error?.response?.data?.error ? error?.response?.data?.error : error);
       });
   }
   return (
