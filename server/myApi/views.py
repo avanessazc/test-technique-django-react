@@ -6,7 +6,6 @@ from .serializers import RecordSerializer
 
 
 class RecordAPIView(APIView):
-
     def get_object(self, pk):
         try:
             instance = Record.objects.get(pk=pk)

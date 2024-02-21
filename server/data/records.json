@@ -1,0 +1,9 @@
+[
+    {
+        "model": "myApi.record",
+        "pk": 1,
+        "fields": {
+            "text": "This is a test! :)"
+        }
+    }
+]

@@ -16,7 +16,8 @@ services:
       postgres:
         condition: service_healthy
     # command: python3 manage.py runserver 0.0.0.0:8000
-    command: tail -f /dev/null
+    # command: tail -f /dev/null
+    command: sh /usr/src/app/scripts/migrations.sh
     networks:
       - internal
   react:
@@ -36,8 +37,8 @@ services:
         source: ./front/public
         target: /usr/src/app/front/public
     restart: unless-stopped
-    command: tail -f /dev/null
-    # command: npm run start
+    # command: tail -f /dev/null
+    command: npm run start
 
   postgres:
     image: postgres:alpine
