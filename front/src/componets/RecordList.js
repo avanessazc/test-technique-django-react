@@ -41,7 +41,7 @@ function RecordList({ records, setRecords }) {
           records.map((record) => (
             <div key={record.id} className="d-flex align-items-center">
               <div className="p-3">{record.id}</div>
-              <div className="p-2 w-100">{record.text}</div>
+              <div className="p-2 w-100 text-break">{record.text}</div>
               <div className="d-flex p-2">
                 <button type="button" className="btn btn-light ms-2" onClick={() => handleDeleteClick(record.id)}>
                   🗑️
