@@ -1,24 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function RecordList() {
-  const [records, setRecords] = useState("");
-
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_SERVER_ENDPOINT}/api/record/`)
-      .then((response) => {
-        setRecords(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
+function RecordList({ records }) {
+  const navigate = useNavigate();
+  const handleEditClick = (id) => {
+    navigate(`/edit/${id}`)
+  }
+  const handleDeleteClick = () => {
+    console.log("Delete...")
+  }
+  const handleAddClick = () => {
+    console.log("Add new record...")
+  }
   return (
     <div className="d-flex flex-column align-items-center w-100">
       <div className="d-flex ">
-        <h1 className="">Record List</h1><button type="button" className="btn btn-light ms-2">
+        <h1 className="">Record List</h1><button type="button" className="btn btn-light ms-2" onClick={() => handleAddClick()}>
           ➕ New
         </button>
       </div>
@@ -34,10 +32,10 @@ function RecordList() {
               <div className="p-3">{record.id}</div>
               <div className="p-2 w-100">{record.text}</div>
               <div className="d-flex p-2">
-                <button type="button" className="btn btn-light ms-2">
+                <button type="button" className="btn btn-light ms-2" onClick={() => handleDeleteClick()}>
                   🗑️
                 </button>
-                <button type="button" className="btn btn-light ms-2">
+                <button type="button" className="btn btn-light ms-2" onClick={() => handleEditClick(record.id)}>
                   ✎
                 </button>
               </div>

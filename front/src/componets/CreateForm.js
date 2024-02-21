@@ -1,7 +1,16 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 
-function CreateForm({title}) {
+function CreateForm({ title, record, saveFn }) {
+  const [text, setText] = useState("");
+
+  useEffect(() => {
+    setText(record?.text ? record.text : "")
+  }, [record]);
+
+  const handleTextChange = event => {
+    setText(event.target.value);
+    // console.log(event.target.value);
+  };
   return (
     <div className="d-flex flex-column align-items-center">
       <h1 className="">{title}</h1>
@@ -14,12 +23,13 @@ function CreateForm({title}) {
           placeholder="Type a text..."
           className="w-100 my-2"
           rows="7"
-          // value={values.username}
+          value={text}
+          onChange={handleTextChange}
           required
-        // onChange={handleChange}
         ></textarea>
-        <button type="button" className="btn btn-info my-3">Save</button>
-      </form>  </div>
+        <button type="button" className="btn btn-info my-3" onClick={() => saveFn(record.id, text)}>Save</button>
+      </form>
+    </div>
   );
 }
 
