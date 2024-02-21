@@ -1,13 +1,9 @@
 import React from "react";
 import RecordList from "../componets/RecordList";
-import CreateForm from "../componets/CreateForm";
 
-function homepage() {
+function Home() {
   return (
     <>
-      <div className="my-5">
-        <CreateForm />
-      </div>
       <div className="mt-5">
         <RecordList />
       </div>
@@ -15,4 +11,4 @@ function homepage() {
   );
 }
 
-export default homepage;
+export default Home;

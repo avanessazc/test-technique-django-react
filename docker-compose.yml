@@ -27,7 +27,7 @@ services:
     networks:
       - internal
     environment:
-      - REACT_APP_SERVER_ENDPOIN=${SERVER_ENDPOINT}
+      - REACT_APP_SERVER_ENDPOINT=${SERVER_ENDPOINT}
     volumes:
       - type: bind
         source: ./front/src
