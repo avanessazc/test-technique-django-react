@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 
-function CreateForm({ title, record, saveFn }) {
+function CreateForm({ title, record, saveFn, error }) {
   const [text, setText] = useState("");
   useEffect(() => {
-    setText(record?.text ? record.text : "")
+    setText(record?.text ? record.text : "");
   }, [record]);
 
-  const handleTextChange = event => {
+  const handleTextChange = (event) => {
     setText(event.target.value);
   };
   return (
@@ -25,8 +25,25 @@ function CreateForm({ title, record, saveFn }) {
           onChange={handleTextChange}
           required
         ></textarea>
-        {record?.id && <button type="button" className="btn btn-info my-3" onClick={() => saveFn(record?.id, text)}>Save</button>}
-        {!record?.id && <button type="button" className="btn btn-info my-3" onClick={() => saveFn(text)}>Save</button>}
+        {error.length > 0 && <div className="text-danger">{error[0]}</div>}
+        {record?.id && (
+          <button
+            type="button"
+            className="btn btn-info my-3"
+            onClick={() => saveFn(record?.id, text)}
+          >
+            Save
+          </button>
+        )}
+        {!record?.id && (
+          <button
+            type="button"
+            className="btn btn-info my-3"
+            onClick={() => saveFn(text)}
+          >
+            Save
+          </button>
+        )}
       </form>
     </div>
   );
