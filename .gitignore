@@ -11,6 +11,6 @@ django_venv
 logs.log
 0*_*.py
 
-.env
+# .env
 
 node_modules
