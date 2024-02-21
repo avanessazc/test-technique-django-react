@@ -19,7 +19,7 @@ function Edit() {
         console.log("Error:", error?.response?.data?.error ? error?.response?.data?.error : error);
         navigate(`/`)
       });
-  }, []);
+  }, [id, navigate]);
 
   const editFn = (id, text) => {
     axios
