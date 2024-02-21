@@ -3,7 +3,7 @@ import axios from "axios";
 import RecordList from "../componets/RecordList";
 
 function Home() {
-  const [records, setRecords] = useState("");
+  const [records, setRecords] = useState([]);
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_SERVER_ENDPOINT}/api/record/`)
@@ -17,7 +17,7 @@ function Home() {
   return (
     <>
       <div className="mt-5">
-        <RecordList records={records} />
+        <RecordList records={records} setRecords={setRecords} />
       </div>
     </>
   );

@@ -16,7 +16,7 @@ function Edit() {
         setRecord({ id: response.data.id, text: response.data.text })
       })
       .catch((error) => {
-        console.log("Error:", error?.response?.data?.error);
+        console.log("Error:", error?.response?.data?.error ? error?.response?.data?.error : error);
         navigate(`/`)
       });
   }, []);
@@ -25,7 +25,7 @@ function Edit() {
     axios
       .put(`${process.env.REACT_APP_SERVER_ENDPOINT}/api/record/${id}/`, { text: text })
       .then((response) => {
-        console.log("response:", response);
+        // console.log("response:", response);
         navigate(`/`)
       })
       .catch((error) => {

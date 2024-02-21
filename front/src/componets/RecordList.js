@@ -1,14 +1,25 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-function RecordList({ records }) {
+function RecordList({ records, setRecords }) {
   const navigate = useNavigate();
   const handleEditClick = (id) => {
     navigate(`/edit/${id}`)
   }
-  const handleDeleteClick = () => {
-    console.log("Delete...")
+  const handleDeleteClick = (id) => {
+    axios
+      .delete(`${process.env.REACT_APP_SERVER_ENDPOINT}/api/record/${id}/`)
+      .then((response) => {
+        // console.log("response:", response);
+        setRecords((current) =>
+          current.filter((record) => record.id !== id)
+        );
+      })
+      .catch((error) => {
+        console.log("Error:", error?.response?.data?.error ? error?.response?.data?.error : error);
+      });
+
   }
   const handleAddClick = () => {
     navigate(`/create`)
@@ -32,7 +43,7 @@ function RecordList({ records }) {
               <div className="p-3">{record.id}</div>
               <div className="p-2 w-100">{record.text}</div>
               <div className="d-flex p-2">
-                <button type="button" className="btn btn-light ms-2" onClick={() => handleDeleteClick()}>
+                <button type="button" className="btn btn-light ms-2" onClick={() => handleDeleteClick(record.id)}>
                   🗑️
                 </button>
                 <button type="button" className="btn btn-light ms-2" onClick={() => handleEditClick(record.id)}>
