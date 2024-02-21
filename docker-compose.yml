@@ -15,7 +15,6 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-    # command: python3 manage.py runserver 0.0.0.0:8000
     # command: tail -f /dev/null
     command: sh /usr/src/app/scripts/migrations.sh
     networks:
@@ -64,18 +63,18 @@ services:
       retries: 3
     restart: unless-stopped
 
-  dbadmin:
-    image: dpage/pgadmin4
-    restart: unless-stopped
-    depends_on:
-      - postgres
-    networks:
-      - internal
-    ports:
-      - 5050:80
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
-      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
+  # dbadmin:
+  #   image: dpage/pgadmin4
+  #   restart: unless-stopped
+  #   depends_on:
+  #     - postgres
+  #   networks:
+  #     - internal
+  #   ports:
+  #     - 5050:80
+  #   environment:
+  #     - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
+  #     - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
 
 networks:
   internal:
