@@ -6,8 +6,7 @@ from ..models import Record
 class RecordSerializer(serializers.Serializer):
 
     id = serializers.IntegerField(read_only=True)
-    text = serializers.CharField(
-        required=True, max_length=1000)
+    text = serializers.CharField(required=True)
 
     def create(self, validated_data):
         return Record.objects.create(**validated_data)
